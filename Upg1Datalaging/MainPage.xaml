@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="Upg1Datalaging.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Upg1Datalaging"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:SharedClassLibary.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1200" Height="600">
+
+    <Page.Resources>
+        <CollectionViewSource x:Name="PeopleCollection" Source="{x:Bind personViewModel.People}"/>
+    </Page.Resources>
+
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="LightBlue">
+            <StackPanel>
+                <TextBlock Text="Save as: " VerticalAlignment="Top" Width="100" Height="60" FontSize="26" Foreground="Black" FontWeight="Bold"/>
+                <Button x:Name="btnSaveJson" Click="btnSaveJson_Click" Content="Json" BorderBrush="Gray" Foreground="Blue" FontSize="30" Width="100" Height="60" Margin="25,0" Background="Black"/>
+                <Button x:Name="btnSaveXml" Click="btnSaveXml_Click" Content="Xml" BorderBrush="Gray" Foreground="Blue" FontSize="30" Width="100" Height="60" Margin="25,10" Background="Black"/>
+                <Button x:Name="btnSaveCsv" Click="btnSaveCsv_Click" Content="Csv" BorderBrush="Gray" Foreground="Blue" FontSize="30" Width="100" Height="60" Margin="25,10" Background="Black"/>
+                <Button x:Name="btnSaveTxt" Click="btnSaveTxt_Click" Content="Txt" BorderBrush="Gray" Foreground="Blue" FontSize="30" Width="100" Height="60" Margin="25,10" Background="Black"/>
+                <Button x:Name="btnLoadFile" Click="btnLoadFile_Click" Content="Load" BorderBrush="Gray" Foreground="Blue" FontSize="30" Width="100" Height="60" Margin="25,120" Background="Black"/>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="1" Background="Gray">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox x:Name="tbFirstName" Grid.Row="0" Margin="15" FontSize="20" PlaceholderText="Förnamn"/>
+            <TextBox x:Name="tbLastName" Grid.Row="1" Margin="15" FontSize="20" PlaceholderText="Efternamn"/>
+            <TextBox x:Name="tbAddress" Grid.Row="2" Margin="15" FontSize="20" PlaceholderText="Adress"/>
+            <TextBox x:Name="tbEmail" Grid.Row="3" Margin="15" FontSize="20" PlaceholderText="E-mail"/>
+            <TextBox x:Name="tbJobTitle" Grid.Row="4" Margin="15" FontSize="20" PlaceholderText="Jobbtitel"/>
+
+        </Grid>
+
+        <Grid Grid.Column="2" Background="Gray">
+            <ListView x:Name="lvFileData" ItemsSource="{Binding Source={StaticResource PeopleCollection}}" Margin="20" FontSize="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Person">
+                        <TextBlock Text="{x:Bind Details}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+    </Grid>
+</Page>
