@@ -15,16 +15,7 @@ namespace SharedClassLibary.Models
         public PersonViewModel()
         {
             People = new ObservableCollection<Person>();
-           // People.Add(new Person("Jesper", "Müllern", "FUruvägen 14", "asdas@msn.com", "student"));
-            //People.Add(new Person("Pontus", "Müllern", "Norrgatan 23", "hehe@hotmail.se", "lager"));
         }
-        //public PersonViewModel(Person person)
-        //{
-        //    People = new ObservableCollection<Person>();
-        //    People.Add(new Person("Jesper", "Müllern", "FUruvägen 14", "asdas@msn.com", "student"));
-        //    People.Add(new Person("Pontus", "Müllern", "Norrgatan 23", "hehe@hotmail.se", "lager"));
-        //    People.Add(new Person(person.FirstName, person.LastName, person.Address, person.Email, person.JobTitle));
-        //}
 
     }
 }

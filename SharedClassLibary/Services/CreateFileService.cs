@@ -11,13 +11,17 @@ namespace SharedClassLibary.Services
     {
         public static async Task CreateFileAsync()
         {
-            StorageFolder storageFolder;
-            storageFolder = KnownFolders.DocumentsLibrary;
+            try
+            {
+                StorageFolder storageFolder;
+                storageFolder = KnownFolders.DocumentsLibrary;
 
-            await storageFolder.CreateFileAsync("jsonfile.json", CreationCollisionOption.OpenIfExists);
-            await storageFolder.CreateFileAsync("xmlfile.xml", CreationCollisionOption.OpenIfExists);
-            await storageFolder.CreateFileAsync("csvfile.csv", CreationCollisionOption.OpenIfExists);
-            await storageFolder.CreateFileAsync("textfile.txt", CreationCollisionOption.OpenIfExists);
+                await storageFolder.CreateFileAsync("jsonfile.json", CreationCollisionOption.OpenIfExists);
+                await storageFolder.CreateFileAsync("xmlfile.xml", CreationCollisionOption.OpenIfExists);
+                await storageFolder.CreateFileAsync("csvfile.csv", CreationCollisionOption.OpenIfExists);
+                await storageFolder.CreateFileAsync("textfile.txt", CreationCollisionOption.OpenIfExists);
+            }
+            catch { }
 
         }
     }
